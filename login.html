@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gedanken</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="login.css" rel="stylesheet">
+    <style>
+    </style>
+  </head>
+
+  <body>
+
+    <!--<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Gedanken</h5>
+      <a class="btn btn-outline-primary" href="#">Sign up</a>
+    </div>-->
+
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="fadeIn first">
+          <img src="http://gedankentanken.com/assets/images/5/gt_logo_shine-83d80511.svg" height="100" id="icon" alt="User Icon" />
+        </div>
+        <form>
+          <input type="text" id="email" class="fadeIn second" name="login" placeholder="login">
+          <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+          <input type="button" id="Login" class="fadeIn fourth" value="Log In">
+        </form>
+        <div id="formFooter">
+          <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+    
+      </div>
+    </div>
+    <script>
+      document.querySelector("#Login").addEventListener("click",()=>{
+        var email = document.querySelector("#email").value;
+        var password = document.querySelector("#password").value;
+        firebase.auth().signInWithEmailAndPassword(email, password).then((data)=>{
+          window.location = "index.html";
+        }).catch(function(error) {
+          
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+      });
+      firebase.auth().onAuthStateChanged(function(user) {
+      if (!user) {
+        window.location = "login.html"
+      }
+    });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./renderer.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+    <script src="firebase.js"></script>
+    <script src="get.js"></script>
+  </body>
+</html>
